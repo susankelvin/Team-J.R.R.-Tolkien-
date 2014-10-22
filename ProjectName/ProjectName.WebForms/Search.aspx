@@ -15,19 +15,19 @@
             <asp:Label ID="lblAuthor" runat="server" Text="Author" CssClass="control-label "></asp:Label>
             <asp:TextBox ID="tbAuthor" runat="server" CssClass="form-control "></asp:TextBox>
         </div>
-        <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-lg" />
+        <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" CssClass="btn btn-lg" />
     </div>
 
     <br />
     <asp:GridView ID="SearchGrid" runat="server" AutoGenerateColumns="False" DataKeyNames="ComodityId" ItemType="Comodity" CssClass="table table-bordered">
         <Columns>
-            <asp:BoundField DataField=Name HeaderText="Name" />
-             <asp:BoundField DataField=Price HeaderText="Price" DataFormatString="{0:C}"/>
-             <asp:BoundField DataField=Description HeaderText="Description" />
-             <asp:BoundField DataField=Author.UserName HeaderText="Author" />
+            <asp:BoundField DataField="Name" HeaderText="Name" />
+            <asp:BoundField DataField="Price" HeaderText="Price" DataFormatString="{0:C}" />
+            <asp:BoundField DataField="Description" HeaderText="Description" />
+            <asp:BoundField DataField="Author.UserName" HeaderText="Author" />
         </Columns>
         <EmptyDataTemplate>
-            <h3 class="text-info">No results</h3>
+            <h3 class="text-info text-center">No results</h3>
         </EmptyDataTemplate>
     </asp:GridView>
 </asp:Content>
