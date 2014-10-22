@@ -9,6 +9,8 @@ using System.Web.SessionState;
 
 namespace Kupuvalnik.WebForms
 {
+    using Logic;
+
     public class Global : HttpApplication
     {
         void Application_Start(object sender, EventArgs e)
@@ -16,6 +18,10 @@ namespace Kupuvalnik.WebForms
             // Code that runs on application startup
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            // Create the custom role and user.
+            RoleActions roleActions = new RoleActions();
+            roleActions.AddUserAndRole();
         }
     }
 }
