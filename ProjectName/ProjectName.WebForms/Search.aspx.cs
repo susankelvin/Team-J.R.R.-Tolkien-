@@ -35,16 +35,15 @@
             if (!string.IsNullOrWhiteSpace(description))
             {
                 string descriptionLower = description.ToLower();
-                query = query.Where(c =>c.Description.Contains(descriptionLower));
-                
+                query = query.Where(c => c.Description.Contains(descriptionLower));
             }
 
             string username = this.tbAuthor.Text;
             if (!string.IsNullOrWhiteSpace(username))
             {
-                query = query.Where(c => c.Author.UserName.Contains(username));
+                query = query.Include("Author").Where(c => c.Author.UserName.Contains(username));
             }
-            
+
             this.SearchGrid.DataSource = query.ToList();
             this.DataBind();
         }
