@@ -36,9 +36,6 @@
                 }
             }
 
-            this.Data.Categories.Add(category);
-            this.Data.SaveChanges();
-
             var offer = new Comodity()
             {
                 Name = this.Name.Text,
