@@ -11,7 +11,7 @@ namespace Kupuvalnik.WebForms
 {
 
 
-    public partial class About
+    public partial class Comodities
     {
     }
 }

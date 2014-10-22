@@ -1,7 +1,8 @@
 ﻿namespace Kupuvalnik.WebForms.Models
 {
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
     public class Comodity
     {
@@ -11,7 +12,7 @@
         {
             this.comments = new HashSet<Comment>();
         }
-
+  
         public int ComodityId { get; set; }
 
         [Required]
@@ -20,13 +21,18 @@
         [Required]
         public decimal Price { get; set; }
 
+        public DateTime DateCreated { get; set; }
+
         public string ImagePath { get; set; }
 
+        [Required]
         public string Description { get; set; }
-
+     
         public int CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
+
+        public bool IsApproved { get; set; }
 
         public virtual ICollection<Comment> Comments
         {
