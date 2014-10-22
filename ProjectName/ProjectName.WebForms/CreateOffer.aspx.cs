@@ -51,7 +51,7 @@
                 Price = decimal.Parse(this.Price.Text),
                 AuthorId = currentUserId,
                 DateCreated = DateTime.Now,
-                CategoryId = int.Parse(this.DropDownListxCategories.SelectedItem.Value),
+                CategoryId = int.Parse(this.DropDownListxCategories.SelectedValue),
                 ImagePath = string.Format("{0}{1}", directory, filename)
             };
             this.Data.Comodities.Add(offer);
