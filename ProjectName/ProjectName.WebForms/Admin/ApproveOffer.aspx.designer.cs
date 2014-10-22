@@ -11,7 +11,7 @@ namespace Kupuvalnik.WebForms.Admin
 {
 
 
-    public partial class AdminPage
+    public partial class ApproveOffer
     {
     }
 }

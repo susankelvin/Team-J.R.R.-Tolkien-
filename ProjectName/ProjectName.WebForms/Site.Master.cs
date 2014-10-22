@@ -70,7 +70,8 @@ namespace Kupuvalnik.WebForms
         {
             if (HttpContext.Current.User.IsInRole("admin"))
             {
-                adminLink.Visible = true;
+                addCategory.Visible = true;
+                approveOffer.Visible = true;
             }
         }
 

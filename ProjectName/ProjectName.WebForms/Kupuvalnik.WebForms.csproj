@@ -160,7 +160,8 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
-    <Content Include="Admin\AdminPage.aspx" />
+    <Content Include="Admin\AddCategory.aspx" />
+    <Content Include="Admin\ApproveOffer.aspx" />
     <Content Include="Comodities.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
@@ -327,12 +328,19 @@
     <Compile Include="Account\VerifyPhoneNumber.aspx.designer.cs">
       <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\AdminPage.aspx.cs">
-      <DependentUpon>AdminPage.aspx</DependentUpon>
+    <Compile Include="Admin\AddCategory.aspx.cs">
+      <DependentUpon>AddCategory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\AdminPage.aspx.designer.cs">
-      <DependentUpon>AdminPage.aspx</DependentUpon>
+    <Compile Include="Admin\AddCategory.aspx.designer.cs">
+      <DependentUpon>AddCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ApproveOffer.aspx.cs">
+      <DependentUpon>ApproveOffer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ApproveOffer.aspx.designer.cs">
+      <DependentUpon>ApproveOffer.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Data\IKupuvalnikContext.cs" />
     <Compile Include="App_Data\IKupuvalnikData.cs" />
