@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-namespace Kupuvalnik.WebForms
+﻿namespace Kupuvalnik.WebForms
 {
-    public partial class Comodities : System.Web.UI.Page
+    using System;
+    using System.Linq;
+
+    using Kupuvalnik.WebForms.BasicPage;
+
+    public partial class Comodities : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

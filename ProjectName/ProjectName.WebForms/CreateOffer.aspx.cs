@@ -1,16 +1,17 @@
-﻿using System;
-using System.Linq;
-using System.Threading;
-using Kupuvalnik.WebForms.App_Data;
-using Kupuvalnik.WebForms.Models;
-using Microsoft.AspNet.Identity;
-
-namespace Kupuvalnik.WebForms
+﻿namespace Kupuvalnik.WebForms
 {
-    public partial class CreateOffer : System.Web.UI.Page
-    {
-        private static IKupuvalnikData data = new KupuvalnikData();
+    using System;
+    using System.Linq;
+    using System.Threading;
 
+    using Microsoft.AspNet.Identity;
+
+    using Kupuvalnik.WebForms.BasicPage;
+    using Kupuvalnik.WebForms.Models;
+
+
+    public partial class CreateOffer : BasePage
+    {
         public void CreateOffer_Click(object sender, EventArgs e)
         {
             var currentUserId = Thread.CurrentPrincipal.Identity.GetUserId();
@@ -19,12 +20,13 @@ namespace Kupuvalnik.WebForms
                 this.ErrorMessage.Text = "You must log in in order to publish an offer!";
                 return;
             }
+
             var category = new Category()
             {
                 Name = "Stuff "+new Random().Next(1,1000)
             };
-            data.Categories.Add(category);
-            data.SaveChanges();
+            this.Data.Categories.Add(category);
+            this.Data.SaveChanges();
 
             var offer = new Comodity()
             {
@@ -35,14 +37,14 @@ namespace Kupuvalnik.WebForms
                 DateCreated=DateTime.Now,
                 CategoryId = int.Parse(this.DropDownListxCategories.SelectedValue)
             };
-            data.Comodities.Add(offer);
-            data.SaveChanges();
+            this.Data.Comodities.Add(offer);
+            this.Data.SaveChanges();
             this.SuccessMessage.Text = "You have succesfully created product!";
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            DropDownListxCategories.DataSource = data.Categories.All().ToList();
+            DropDownListxCategories.DataSource = this.Data.Categories.All().ToList();
             DropDownListxCategories.DataBind();
         }
     }

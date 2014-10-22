@@ -345,6 +345,9 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="BasicPage\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Comodities.aspx.cs">
       <DependentUpon>Comodities.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

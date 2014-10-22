@@ -1,6 +1,7 @@
 ﻿namespace Kupuvalnik.WebForms.Models
 {
     using System.ComponentModel.DataAnnotations;
+
     public class Comment
     {
         public int CommentId { get; set; }
