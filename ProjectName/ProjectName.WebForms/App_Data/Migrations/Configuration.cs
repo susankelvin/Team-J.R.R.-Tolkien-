@@ -5,7 +5,7 @@ namespace Kupuvalnik.WebForms.App_Data.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Kupuvalnik.WebForms.App_Data.KupuvalnikDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<KupuvalnikDbContext>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace Kupuvalnik.WebForms.App_Data.Migrations
             AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(Kupuvalnik.WebForms.App_Data.KupuvalnikDbContext context)
+        protected override void Seed(KupuvalnikDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

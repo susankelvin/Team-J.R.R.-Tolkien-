@@ -350,8 +350,8 @@
     <Compile Include="App_Data\Migrations\Configuration.cs" />
     <Compile Include="App_Data\KupuvalnikData.cs" />
     <Compile Include="App_Data\KupuvalnikDbContext.cs" />
-    <Compile Include="App_Data\Ropositories\GenericRepository.cs" />
-    <Compile Include="App_Data\Ropositories\IGenericRepository.cs" />
+    <Compile Include="App_Data\Repositories\GenericRepository.cs" />
+    <Compile Include="App_Data\Repositories\IGenericRepository.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
