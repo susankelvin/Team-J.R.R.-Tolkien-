@@ -1,14 +1,12 @@
 ﻿namespace Kupuvalnik.WebForms
 {
     using System;
+    using System.IO;
     using System.Linq;
     using System.Threading;
-
-    using Microsoft.AspNet.Identity;
-
     using Kupuvalnik.WebForms.BasicPage;
     using Kupuvalnik.WebForms.Models;
-
+    using Microsoft.AspNet.Identity;
 
     public partial class CreateOffer : BasePage
     {
@@ -23,8 +21,26 @@
 
             var category = new Category()
             {
-                Name = "Stuff "+new Random().Next(1,1000)
+                Name = string.Format("Pesho {0}", new Random().Next(1, 1000))
             };
+            
+            string filename = "";
+            string directory = "~/Uploaded_Files/";
+            if (this.FileUploadControl.HasFile)
+            {
+                if (this.FileUploadControl.PostedFile.ContentType == "image/jpeg" ||
+                    this.FileUploadControl.PostedFile.ContentType == "image/jpg" ||
+                    this.FileUploadControl.PostedFile.ContentType == "image/png")
+                {
+                    filename = Path.GetFileName(this.FileUploadControl.FileName);
+                    this.FileUploadControl.SaveAs(string.Format("{0}{1}", this.Server.MapPath(directory), filename));
+                }
+                else
+                {
+                    this.ErrorMessage.Text = "Image must be with file extension .jpeg or .png";
+                }
+            }
+
             this.Data.Categories.Add(category);
             this.Data.SaveChanges();
 
@@ -34,8 +50,9 @@
                 Description = this.Description.Text,
                 Price = decimal.Parse(this.Price.Text),
                 AuthorId = currentUserId,
-                DateCreated=DateTime.Now,
-                CategoryId = int.Parse(this.DropDownListxCategories.SelectedValue)
+                DateCreated = DateTime.Now,
+                CategoryId = int.Parse(this.DropDownListxCategories.SelectedValue),
+                ImagePath = string.Format("{0}{1}", directory, filename)
             };
             this.Data.Comodities.Add(offer);
             this.Data.SaveChanges();
@@ -44,8 +61,8 @@
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            DropDownListxCategories.DataSource = this.Data.Categories.All().ToList();
-            DropDownListxCategories.DataBind();
+            this.DropDownListxCategories.DataSource = this.Data.Categories.All().ToList();
+            this.DropDownListxCategories.DataBind();
         }
     }
 }

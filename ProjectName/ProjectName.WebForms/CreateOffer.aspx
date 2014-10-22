@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateOffer.aspx.cs" Inherits="Kupuvalnik.WebForms.CreateOffer" %>
+﻿<%@ Page Title="Create Offer" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateOffer.aspx.cs" Inherits="Kupuvalnik.WebForms.CreateOffer" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %></h2>
     <p class="text-danger bg-danger">
@@ -41,21 +41,20 @@
             <div class="col-md-10">
 
                 <asp:DropDownList ID="DropDownListxCategories" runat="server" CssClass="form-control"
-                    DataTextField="Name" DataValueField="CategoryId"></asp:DropDownList>
+                                  DataTextField="Name" DataValueField="CategoryId"></asp:DropDownList>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="DropDownListxCategories"
                                             CssClass="text-danger" ErrorMessage="The category field is required." />
             </div>
         </div>
-        <%--<div class="form-group">
-        <asp:Label runat="server" AssociatedControlID="Image" CssClass="col-md-2 control-label">Image:</asp:Label>
-        <div class="col-md-10">
-        <asp:TextBox runat="server" ID="ConfirmPassword" TextMode="Password" CssClass="form-control" />
-        <asp:RequiredFieldValidator runat="server" ControlToValidate="ConfirmPassword"
-        CssClass="text-danger" Display="Dynamic" ErrorMessage="The confirm password field is required." />
-        <asp:CompareValidator runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword"
-        CssClass="text-danger" Display="Dynamic" ErrorMessage="The password and confirmation password do not match." />
+
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="FileUploadControl" CssClass="col-md-2 control-label">Image:</asp:Label>
+            <div class="col-md-10">
+                <asp:FileUpload ID="FileUploadControl" runat="server" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="FileUploadControl"
+                  CssClass ="text-danger"  ErrorMessage="The image  field is required." />
+            </div>
         </div>
-        </div>--%>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <asp:Button runat="server" OnClick="CreateOffer_Click" Text="Create" CssClass="btn btn-primary" />
