@@ -28,26 +28,23 @@
             string name = this.tbName.Text;
             if (!string.IsNullOrWhiteSpace(name))
             {
-                query = query.Where(c => c.Name == name);
+                query = query.Where(c => c.Name.Contains(name));
             }
 
             string description = this.tbDescription.Text;
-            //if (!string.IsNullOrWhiteSpace(description))
-            //{
-            //    string descriptionLower = description.ToLower();
-            //    query = query.Where(c =>
-            //    {
-            //        string itemDescriptionLower = c.Description.ToLower();
-            //        return itemDescriptionLower.Contains(descriptionLower);
-            //    });
-            //}
+            if (!string.IsNullOrWhiteSpace(description))
+            {
+                string descriptionLower = description.ToLower();
+                query = query.Where(c =>c.Description.Contains(descriptionLower));
+                
+            }
 
             string username = this.tbAuthor.Text;
             if (!string.IsNullOrWhiteSpace(username))
             {
-                query = query.Include("Author").Where(c => c.Author.UserName == username);
+                query = query.Where(c => c.Author.UserName.Contains(username));
             }
-
+            
             this.SearchGrid.DataSource = query.ToList();
             this.DataBind();
         }
