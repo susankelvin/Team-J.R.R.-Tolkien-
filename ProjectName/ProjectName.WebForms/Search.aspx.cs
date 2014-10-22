@@ -41,7 +41,7 @@
             string username = this.tbAuthor.Text;
             if (!string.IsNullOrWhiteSpace(username))
             {
-                query = query.Include("Author").Where(c => c.Author.UserName.Contains(username));
+                query = query.Include("Author").Where(c => c.Author.UserName == username);
             }
 
             this.SearchGrid.DataSource = query.ToList();

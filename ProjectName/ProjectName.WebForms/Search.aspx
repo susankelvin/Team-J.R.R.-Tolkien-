@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Search.aspx.cs" Inherits="Kupuvalnik.WebForms.Search" %>
 
 <asp:Content ID="SearchContent" ContentPlaceHolderID="MainContent" runat="server">
+    <%-- ScriptManger is in master page --%>
+
     <div class="container">
         <h2>Search</h2>
         <div class="form-group">
@@ -19,15 +21,22 @@
     </div>
 
     <br />
-    <asp:GridView ID="SearchGrid" runat="server" AutoGenerateColumns="False" DataKeyNames="ComodityId" ItemType="Comodity" CssClass="table table-bordered">
-        <Columns>
-            <asp:BoundField DataField="Name" HeaderText="Name" />
-            <asp:BoundField DataField="Price" HeaderText="Price" DataFormatString="{0:C}" />
-            <asp:BoundField DataField="Description" HeaderText="Description" />
-            <asp:BoundField DataField="Author.UserName" HeaderText="Author" />
-        </Columns>
-        <EmptyDataTemplate>
-            <h3 class="text-info text-center">No results</h3>
-        </EmptyDataTemplate>
-    </asp:GridView>
+    <asp:UpdatePanel ID="UpdatePanel" runat="server" UpdateMode="Conditional">
+        <ContentTemplate>
+            <asp:GridView ID="SearchGrid" runat="server" AutoGenerateColumns="False" DataKeyNames="ComodityId" ItemType="Comodity" CssClass="table table-bordered">
+                <Columns>
+                    <asp:BoundField DataField="Name" HeaderText="Name" />
+                    <asp:BoundField DataField="Price" HeaderText="Price" DataFormatString="{0:C}" />
+                    <asp:BoundField DataField="Description" HeaderText="Description" />
+                    <asp:BoundField DataField="Author.UserName" HeaderText="Author" />
+                </Columns>
+                <EmptyDataTemplate>
+                    <h3 class="text-info text-center">No results</h3>
+                </EmptyDataTemplate>
+            </asp:GridView>
+        </ContentTemplate>
+        <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="btnSearch" />
+        </Triggers>
+    </asp:UpdatePanel>
 </asp:Content>
