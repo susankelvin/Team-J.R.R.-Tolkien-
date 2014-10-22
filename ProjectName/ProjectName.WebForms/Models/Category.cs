@@ -29,6 +29,5 @@
                 this.comodities = value;
             }
         }
-
     }
 }

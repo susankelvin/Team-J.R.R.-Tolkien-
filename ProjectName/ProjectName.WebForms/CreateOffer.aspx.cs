@@ -1,21 +1,15 @@
-﻿using System;
-using System.Linq;
-using System.Threading;
-using Kupuvalnik.WebForms.App_Data;
-using Kupuvalnik.WebForms.Models;
-using Microsoft.AspNet.Identity;
-using System.IO;
-
-namespace Kupuvalnik.WebForms
+﻿namespace Kupuvalnik.WebForms
 {
-    public partial class CreateOffer : System.Web.UI.Page
+    using System;
+    using System.IO;
+    using System.Linq;
+    using System.Threading;
+    using Kupuvalnik.WebForms.BasicPage;
+    using Kupuvalnik.WebForms.Models;
+    using Microsoft.AspNet.Identity;
+
+    public partial class CreateOffer : BasePage
     {
-        private static IKupuvalnikData data = new KupuvalnikData();
-
-        public void UploadButton_Click(object sender, EventArgs e)
-        {
-        }
-
         public void CreateOffer_Click(object sender, EventArgs e)
         {
             var currentUserId = Thread.CurrentPrincipal.Identity.GetUserId();
@@ -24,23 +18,31 @@ namespace Kupuvalnik.WebForms
                 this.ErrorMessage.Text = "You must log in in order to publish an offer!";
                 return;
             }
+
             var category = new Category()
             {
-                Name = "Stuff " + new Random().Next(1, 1000)
+                Name = string.Format("Pesho {0}", new Random().Next(1, 1000))
             };
-            data.Categories.Add(category);
-            data.SaveChanges();
+            
             string filename = "";
-            string directory="~/Uploaded_Files/";
+            string directory = "~/Uploaded_Files/";
             if (this.FileUploadControl.HasFile)
             {
-                if (FileUploadControl.PostedFile.ContentType != "image/jpeg" || FileUploadControl.PostedFile.ContentType != "image/jpeg" )
+                if (this.FileUploadControl.PostedFile.ContentType == "image/jpeg" ||
+                    this.FileUploadControl.PostedFile.ContentType == "image/jpg" ||
+                    this.FileUploadControl.PostedFile.ContentType == "image/png")
                 {
-                    filename = Path.GetFileName(FileUploadControl.FileName);
-                    FileUploadControl.SaveAs(Server.MapPath(directory) + filename);
+                    filename = Path.GetFileName(this.FileUploadControl.FileName);
+                    this.FileUploadControl.SaveAs(string.Format("{0}{1}", this.Server.MapPath(directory), filename));
+                }
+                else
+                {
                     this.ErrorMessage.Text = "Image must be with file extension .jpeg or .png";
                 }
             }
+
+            this.Data.Categories.Add(category);
+            this.Data.SaveChanges();
 
             var offer = new Comodity()
             {
@@ -49,18 +51,18 @@ namespace Kupuvalnik.WebForms
                 Price = decimal.Parse(this.Price.Text),
                 AuthorId = currentUserId,
                 DateCreated = DateTime.Now,
-                CategoryId = int.Parse(this.DropDownListxCategories.SelectedValue),
-                ImagePath=directory+filename
+                CategoryId = int.Parse(this.DropDownListxCategories.SelectedItem.Value),
+                ImagePath = string.Format("{0}{1}", directory, filename)
             };
-            data.Comodities.Add(offer);
-            data.SaveChanges();
+            this.Data.Comodities.Add(offer);
+            this.Data.SaveChanges();
             this.SuccessMessage.Text = "You have succesfully created product!";
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            DropDownListxCategories.DataSource = data.Categories.All().ToList();
-            DropDownListxCategories.DataBind();
+            this.DropDownListxCategories.DataSource = this.Data.Categories.All().ToList();
+            this.DropDownListxCategories.DataBind();
         }
     }
 }

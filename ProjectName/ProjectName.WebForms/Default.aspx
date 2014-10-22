@@ -3,7 +3,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <h>Latest Offers</h>
+        <h2>Latest Offers</h2>
 
         <asp:GridView ID="LatestOffers" runat="server"
                       AutoGenerateColumns="False" DataKeyNames="ComodityID">
@@ -11,7 +11,13 @@
                 <asp:BoundField DataField="Name" HeaderText="Product Name" >
                     <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>
-                <asp:BoundField DataField="Price" HeaderText="Price"  />
+                <asp:TemplateField HeaderText="Price"  >
+                    <ItemTemplate>
+                        
+                    <%#: String.Format("{0:c}", (Container.DataItem as Kupuvalnik.WebForms.Models.Comodity).Price) %>
+
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="Category.Name" HeaderText="Category"  >
                     <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>

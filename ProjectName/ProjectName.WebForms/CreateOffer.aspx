@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateOffer.aspx.cs" Inherits="Kupuvalnik.WebForms.CreateOffer" %>
+﻿<%@ Page Title="Create Offer" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateOffer.aspx.cs" Inherits="Kupuvalnik.WebForms.CreateOffer" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %></h2>
     <p class="text-danger bg-danger">
@@ -48,10 +48,9 @@
         </div>
 
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="UploadButton" CssClass="col-md-2 control-label">Image:</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="FileUploadControl" CssClass="col-md-2 control-label">Image:</asp:Label>
             <div class="col-md-10">
                 <asp:FileUpload ID="FileUploadControl" runat="server" />
-                <asp:Button runat="server" ID="UploadButton" Text="Upload" OnClick="UploadButton_Click" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="FileUploadControl"
                   CssClass ="text-danger"  ErrorMessage="The image  field is required." />
             </div>
