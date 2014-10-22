@@ -168,7 +168,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="CreateOffer.aspx" />
+    <Content Include="Account\CreateOffer.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -378,11 +378,11 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CreateOffer.aspx.cs">
+    <Compile Include="Account\CreateOffer.aspx.cs">
       <DependentUpon>CreateOffer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CreateOffer.aspx.designer.cs">
+    <Compile Include="Account\CreateOffer.aspx.designer.cs">
       <DependentUpon>CreateOffer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">

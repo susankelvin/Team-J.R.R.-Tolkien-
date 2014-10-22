@@ -18,11 +18,6 @@
                 this.ErrorMessage.Text = "You must log in in order to publish an offer!";
                 return;
             }
-
-            var category = new Category()
-            {
-                Name = string.Format("Pesho {0}", new Random().Next(1, 1000))
-            };
             
             string filename = "";
             string directory = "~/Uploaded_Files/";
@@ -61,8 +56,11 @@
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.DropDownListxCategories.DataSource = this.Data.Categories.All().ToList();
-            this.DropDownListxCategories.DataBind();
+            if (!IsPostBack)
+            {
+                this.DropDownListxCategories.DataSource = this.Data.Categories.All().ToList();
+                this.DropDownListxCategories.DataBind();
+            }
         }
     }
 }
