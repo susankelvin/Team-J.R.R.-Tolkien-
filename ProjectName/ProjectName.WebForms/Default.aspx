@@ -8,9 +8,9 @@
         <asp:GridView ID="LatestOffers" runat="server"
                       AutoGenerateColumns="False" DataKeyNames="ComodityID">
             <Columns>
-                <asp:BoundField DataField="Name" HeaderText="Product Name" >
+                <asp:HyperLinkField DataTextField="Name" DataNavigateUrlFields="ComodityId" HeaderText="Product Name" >
                     <ItemStyle HorizontalAlign="Center" />
-                </asp:BoundField>
+                </asp:HyperLinkField>
                 <asp:TemplateField HeaderText="Price"  >
                     <ItemTemplate>
                         

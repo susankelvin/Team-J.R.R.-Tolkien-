@@ -22,6 +22,15 @@ namespace Kupuvalnik.WebForms
             // Create the custom role and user.
             RoleActions roleActions = new RoleActions();
             roleActions.AddUserAndRole();
+
+            RegisterRoutes(RouteTable.Routes);
+        }
+
+        private void RegisterRoutes(RouteCollection routes)
+        {
+            routes.MapPageRoute("ComodityDetails",
+                "{comodityid}",
+                "~/ComodityDetails/Details.aspx");
         }
     }
 }

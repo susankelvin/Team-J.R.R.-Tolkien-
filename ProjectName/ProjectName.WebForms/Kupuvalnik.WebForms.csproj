@@ -163,6 +163,7 @@
     <Content Include="Admin\AddCategory.aspx" />
     <Content Include="Admin\ApproveOffer.aspx" />
     <Content Include="Comodities.aspx" />
+    <Content Include="ComodityDetails\Details.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -175,6 +176,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
     <Content Include="Admin\Web.config" />
+    <Content Include="ComodityDetails\Web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -362,6 +364,13 @@
     </Compile>
     <Compile Include="Comodities.aspx.designer.cs">
       <DependentUpon>Comodities.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ComodityDetails\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ComodityDetails\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
