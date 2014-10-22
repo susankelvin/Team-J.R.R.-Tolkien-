@@ -3,19 +3,26 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <h2>Latest Offers</h2>
+        <h>Latest Offers</h>
 
         <asp:GridView ID="LatestOffers" runat="server"
-            AutoGenerateColumns="False" DataKeyNames="ComodityID">
+                      AutoGenerateColumns="False" DataKeyNames="ComodityID">
             <Columns>
-                <asp:BoundField DataField="Name" HeaderText="Product Name"  />
-                <asp:BoundField DataField="Description" HeaderText="Description"  />
+                <asp:BoundField DataField="Name" HeaderText="Product Name" >
+                    <ItemStyle HorizontalAlign="Center" />
+                </asp:BoundField>
                 <asp:BoundField DataField="Price" HeaderText="Price"  />
-                <asp:BoundField DataField="Category.Name" HeaderText="Category"  />
-                <%--<asp:BoundField DataField="Image" HeaderText="Photo"  />--%>
+                <asp:BoundField DataField="Category.Name" HeaderText="Category"  >
+                    <ItemStyle HorizontalAlign="Center" />
+                </asp:BoundField>
+                <asp:TemplateField  HeaderText="Photo" >
+                    <ItemTemplate>
+                        <asp:Image ID="Image1" runat="server" ImageUrl='<%# (Container.DataItem as Kupuvalnik.WebForms.Models.Comodity).ImagePath%>'  
+                                   Height="150px" Width="200px" />
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
         </asp:GridView>
     </div>
 
-   
 </asp:Content>
