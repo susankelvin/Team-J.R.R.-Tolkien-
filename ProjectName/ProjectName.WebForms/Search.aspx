@@ -5,27 +5,27 @@
 
     <div class="container">
         <h2 class="text-center">All Offers</h2>
-        <div class="form-group">
-            <asp:Label ID="lblName" runat="server" Text="Name" CssClass="control-label "></asp:Label>
+        <div class="form-group col-lg-3">
+            <asp:Label ID="lblName" runat="server" Text="Name" AssociatedControlID="tbName" CssClass="control-label "></asp:Label>
             <asp:TextBox ID="tbName" runat="server" CssClass="form-control " ></asp:TextBox>
         </div>
-        <div class="form-group">
-            <asp:Label ID="lblDescription" runat="server" Text="Description" CssClass="control-label "></asp:Label>
+        <div class="form-group col-lg-3">
+            <asp:Label ID="lblDescription" runat="server" Text="Description" AssociatedControlID="tbDescription" CssClass="control-label "></asp:Label>
             <asp:TextBox ID="tbDescription" runat="server" CssClass="form-control"></asp:TextBox>
         </div>
-        <div class="form-group">
-            <asp:Label ID="lblAuthor" runat="server" Text="Author" CssClass="control-label "></asp:Label>
+        <div class="form-group col-lg-3">
+            <asp:Label ID="lblAuthor" runat="server" Text="Author" AssociatedControlID="tbAuthor" CssClass="control-label "></asp:Label>
             <asp:TextBox ID="tbAuthor" runat="server" CssClass="form-control "></asp:TextBox>
         </div>
-        <div class="form-group">
+        <div class="form-group  col-lg-3">
 
-            <asp:Label runat="server" AssociatedControlID="DropDownListxCategories" CssClass="col-md-2 control-label">Category</asp:Label>
+            <asp:Label ID="lblCategory" runat="server" AssociatedControlID="DropDownListxCategories" CssClass="control-label">Category</asp:Label>
 
             <asp:DropDownList ID="DropDownListxCategories" runat="server" CssClass="form-control"
                               DataTextField="Name" DataValueField="CategoryId"></asp:DropDownList>
 
         </div>
-        <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" CssClass="btn btn-lg" />
+        <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" CssClass="btn btn-lg pull-right" />
     </div>
 
     <br />
