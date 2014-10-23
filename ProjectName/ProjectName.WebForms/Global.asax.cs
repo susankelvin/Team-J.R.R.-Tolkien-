@@ -39,11 +39,11 @@ namespace Kupuvalnik.WebForms
 
         protected void Application_EndRequest(Object sender, EventArgs e)
         {
-            if (HttpContext.Current.Response.Status.StartsWith("500"))
-            {
-                HttpContext.Current.Response.ClearContent();
-                Response.Redirect("Unauthorized.aspx");
-            }
+            //if (HttpContext.Current.Response.Status.StartsWith("500"))
+            //{
+            //    HttpContext.Current.Response.ClearContent();
+            //    Response.Redirect("Unauthorized.aspx");
+            //}
         }
     }
 }

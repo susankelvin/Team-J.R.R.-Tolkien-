@@ -20,7 +20,7 @@
                 ViewState["sortDirection"] = "ASC";
             }
             
-            var comodities = this.Data.Comodities.All();
+            var comodities = this.Data.Comodities.All().Where(x => x.IsApproved);
             if (e.SortExpression.StartsWith("Price"))
             {
                 if (ViewState["sortDirection"] == "ASC")
@@ -51,7 +51,7 @@
         public void SearchGrid_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             this.SearchGrid.PageIndex = e.NewPageIndex;
-            var comodities = this.Data.Comodities.All().Include("Author");
+            var comodities = this.Data.Comodities.All().Include("Author").Where(x => x.IsApproved);
 
             if (!string.IsNullOrWhiteSpace(this.DropDownListxCategories.SelectedItem.Text))
             {
@@ -68,7 +68,7 @@
             {
                 ViewState["sortDirection"] = " ";
 
-                this.SearchGrid.DataSource = this.Data.Comodities.All().Include("Author").ToList();
+                this.SearchGrid.DataSource = this.Data.Comodities.All().Include("Author").Where(x => x.IsApproved).ToList();
                 this.SearchGrid.DataBind();
                 
                 var categories = this.Data.Categories.All().ToList();
@@ -82,7 +82,7 @@
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            var query = this.Data.Comodities.All();
+            var query = this.Data.Comodities.All().Where(x => x.IsApproved);
             string name = this.tbName.Text;
             if (!string.IsNullOrWhiteSpace(name))
             {

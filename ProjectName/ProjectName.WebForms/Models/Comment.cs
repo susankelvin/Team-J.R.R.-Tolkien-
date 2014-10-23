@@ -1,5 +1,6 @@
 ﻿namespace Kupuvalnik.WebForms.Models
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
 
     public class Comment
@@ -10,6 +11,8 @@
         public string Text { get; set; }
 
         public string AuthorId { get; set; }
+
+        public DateTime DateCreated { get; set; }
 
         public virtual ApplicationUser Author { get; set; }
 
