@@ -19,7 +19,7 @@
             int currentComodityId = 0;
             try
             {
-                currentComodityId = int.Parse(Request.CurrentExecutionFilePath.TrimStart('/'));
+                currentComodityId = int.Parse(Page.RouteData.Values["comodityid"].ToString());
             }
             catch (Exception)
             {
