@@ -31,6 +31,10 @@ namespace Kupuvalnik.WebForms
             routes.MapPageRoute("ComodityDetails",
                 "{comodityid}",
                 "~/ComodityDetails/Details.aspx");
+
+            routes.MapPageRoute("AdminComodityDetails",
+            "Admin/{comodityid}",
+            "~/ComodityDetails/Details.aspx");
         }
     }
 }
