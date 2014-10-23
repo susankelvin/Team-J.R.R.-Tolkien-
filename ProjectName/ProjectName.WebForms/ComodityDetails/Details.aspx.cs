@@ -31,6 +31,9 @@
             {
                 Response.Redirect("/");
             }
+            
+            this.ComodityImage.ImageUrl = this.Comodity.ImagePath;
+            this.ComodityImage.DataBind();
         }
     }
 }

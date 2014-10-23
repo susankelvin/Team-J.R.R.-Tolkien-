@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="Details" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Details.aspx.cs" Inherits="Kupuvalnik.WebForms.ComodityDetails.Details" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h1><%: this.Comodity.Name %></h1>
-    <img class="pull-right" style="margin-right:500px" src='<%: this.Comodity.ImagePath.TrimStart(new char[]{'/', '~'}) %>' height="300px" width="450px" />
+    <asp:Image ID="ComodityImage" CssClass="pull-right" runat="server" ImageUrl='<%# this.Comodity.ImagePath%>'  
+                                   Height="300px" Width="450px" />
     <h3>Description:</h3>
     <p><%: this.Comodity.Name %></p>
     <h3>Price:</h3>
