@@ -25,7 +25,7 @@
                 <asp:TemplateField  HeaderText="Photo" >
                     <ItemTemplate>
                         <asp:Image ID="Image1" runat="server" ImageUrl='<%# (Container.DataItem as Kupuvalnik.WebForms.Models.Comodity).ImagePath%>'  
-                                   Height="150px" Width="200px" />
+                                   Height="150px" Width="250px" />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

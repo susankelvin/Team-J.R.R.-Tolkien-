@@ -46,8 +46,6 @@ namespace Kupuvalnik.WebForms.Admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.ApprovementOffers.PagerSettings.NextPageText = "Click for next page";
-            this.ApprovementOffers.PagerSettings.PreviousPageText = "Click for previous page";
             Bind();
         }
 

@@ -23,10 +23,15 @@
     <br />
     <asp:UpdatePanel ID="UpdatePanel" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-            <asp:GridView ID="SearchGrid" runat="server" AutoGenerateColumns="False" DataKeyNames="ComodityId" ItemType="Comodity" CssClass="table table-bordered">
+            <asp:GridView ID="SearchGrid" runat="server" AutoGenerateColumns="False"
+                 DataKeyNames="ComodityId" ItemType="Comodity"
+                 CssClass="table table-bordered" AllowPaging="True" AllowSorting="True"
+                OnPageIndexChanging="SearchGrid_PageIndexChanging">
                 <Columns>
-                    <asp:BoundField DataField="Name" HeaderText="Name" />
-                    <asp:BoundField DataField="Price" HeaderText="Price" DataFormatString="{0:C}" />
+                    <asp:HyperLinkField DataTextField="Name" DataNavigateUrlFields="ComodityId" SortExpression="Name" HeaderText="Product Name" >
+                        <ItemStyle HorizontalAlign="Center" />
+                    </asp:HyperLinkField>
+                    <asp:BoundField DataField="Price" HeaderText="Price" DataFormatString="{0:C}" SortExpression="Price" />
                     <asp:BoundField DataField="Description" HeaderText="Description" />
                     <asp:BoundField DataField="Author.UserName" HeaderText="Author" />
                 </Columns>

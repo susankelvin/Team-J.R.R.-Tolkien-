@@ -22,6 +22,13 @@
             }
         }
 
+        public void SearchGrid_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            this.SearchGrid.PageIndex = e.NewPageIndex;
+            this.SearchGrid.DataSource = this.Data.Comodities.All().Include("Author").ToList();
+            this.DataBind();
+        }
+
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             var query = this.Data.Comodities.All();
@@ -41,7 +48,7 @@
             string username = this.tbAuthor.Text;
             if (!string.IsNullOrWhiteSpace(username))
             {
-                query = query.Include("Author").Where(c => c.Author.UserName == username);
+                query = query.Include("Author").Where(c => c.Author.UserName.Contains(username));
             }
 
             this.SearchGrid.DataSource = query.ToList();
