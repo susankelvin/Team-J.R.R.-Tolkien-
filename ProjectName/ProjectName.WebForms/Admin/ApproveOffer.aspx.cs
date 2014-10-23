@@ -25,7 +25,7 @@ namespace Kupuvalnik.WebForms.Admin
             {
                 int index = Convert.ToInt32(e.CommandArgument);  
                 GridViewRow selectedRow = this.ApprovementOffers.Rows[index];
-                var a = ((TextBox)selectedRow.Cells[0].Controls[0]).Text;
+                var a = ((HyperLink)selectedRow.Cells[0].Controls[0]).Text;
                 var jewel = this.Data.Comodities.All().FirstOrDefault(c => c.Name == a && c.IsApproved==false);
              
                 jewel.IsApproved = true;

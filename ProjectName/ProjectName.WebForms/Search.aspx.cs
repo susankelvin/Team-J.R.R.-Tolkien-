@@ -20,7 +20,6 @@
             //(this.Data.Comodities as DataTable).DefaultView.Sort = e.SortExpression + " " + GetSortDirection(e.SortExpression);
             //SearchGrid.DataSource = Session["TaskTable"];
             //SearchGrid.DataBind();
-            
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -28,14 +27,28 @@
             if (!this.IsPostBack)
             {
                 this.SearchGrid.DataSource = this.Data.Comodities.All().Include("Author").ToList();
-                this.DataBind();
+                this.SearchGrid.DataBind();
+                
+                var categories = this.Data.Categories.All().ToList();
+                categories.Insert(0, new Category() { CategoryId = 0, Name = "" });
+
+                this.DropDownListxCategories.DataSource = categories;
+                
+                this.DropDownListxCategories.DataBind();
             }
         }
 
         public void SearchGrid_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             this.SearchGrid.PageIndex = e.NewPageIndex;
-            this.SearchGrid.DataSource = this.Data.Comodities.All().Include("Author").ToList();
+            var comodities = this.Data.Comodities.All().Include("Author");
+
+            if (!string.IsNullOrWhiteSpace(this.DropDownListxCategories.SelectedItem.Text))
+            {
+                comodities = comodities.Where(c => c.Category.Name == this.DropDownListxCategories.SelectedItem.Text);
+            }
+
+            this.SearchGrid.DataSource = comodities.ToList();
             this.DataBind();
         }
 
@@ -54,11 +67,17 @@
                 string descriptionLower = description.ToLower();
                 query = query.Where(c => c.Description.Contains(descriptionLower));
             }
-
+           
             string username = this.tbAuthor.Text;
             if (!string.IsNullOrWhiteSpace(username))
             {
                 query = query.Include("Author").Where(c => c.Author.UserName.Contains(username));
+            }
+
+            string category = this.DropDownListxCategories.SelectedItem.Text;
+            if (!string.IsNullOrEmpty(category))
+            {
+                query = query.Include("Category").Where(c => c.Category.Name == category);
             }
 
             this.SearchGrid.DataSource = query.ToList();

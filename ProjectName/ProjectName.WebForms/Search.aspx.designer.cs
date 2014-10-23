@@ -67,6 +67,15 @@ namespace Kupuvalnik.WebForms {
         protected global::System.Web.UI.WebControls.TextBox tbAuthor;
         
         /// <summary>
+        /// DropDownListxCategories control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListxCategories;
+        
+        /// <summary>
         /// btnSearch control.
         /// </summary>
         /// <remarks>
