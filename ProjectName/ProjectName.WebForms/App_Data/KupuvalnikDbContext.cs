@@ -38,7 +38,5 @@ namespace Kupuvalnik.WebForms.App_Data
         {
             return new KupuvalnikDbContext();
         }
-
-
     }
 }

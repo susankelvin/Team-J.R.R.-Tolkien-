@@ -1,9 +1,10 @@
 namespace Kupuvalnik.WebForms.App_Data.Migrations
 {
     using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+
+    using Kupuvalnik.WebForms.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<KupuvalnikDbContext>
     {
@@ -15,18 +16,26 @@ namespace Kupuvalnik.WebForms.App_Data.Migrations
 
         protected override void Seed(KupuvalnikDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            if (!context.Categories.Any())
+            {
+                context.Categories.Add(new Category
+                {
+                    Name = "Cars"
+                });
+                context.Categories.Add(new Category
+                {
+                    Name = "Clothes"
+                });
+                context.Categories.Add(new Category
+                {
+                    Name = "Apples"
+                });
+                context.Categories.Add(new Category
+                {
+                    Name = "Peshos"
+                });
+                context.SaveChanges();
+            }
         }
     }
 }
