@@ -13,9 +13,9 @@
                 <div class="text-center"> No offers for approving</div>
             </EmptyDataTemplate>
             <Columns>
-                <asp:HyperLinkField DataTextField="Name" DataNavigateUrlFields="ComodityId" HeaderText="Product Name" >
+                <asp:BoundField DataField="Name" HeaderText="Product Name" >
                     <ItemStyle HorizontalAlign="Center" />
-                </asp:HyperLinkField>
+                </asp:BoundField>
                 <asp:TemplateField HeaderText="Price"  >
                     <ItemTemplate>
 

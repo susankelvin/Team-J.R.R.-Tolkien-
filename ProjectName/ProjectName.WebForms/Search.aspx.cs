@@ -10,9 +10,19 @@
     using System.Web.UI.WebControls;
     using System.Text.RegularExpressions;
     using Kupuvalnik.WebForms.Models;
+    using System.Data;
 
     public partial class Search : BasePage
     {
+        public void SearchGrid_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            ////Sort the data.
+            //(this.Data.Comodities as DataTable).DefaultView.Sort = e.SortExpression + " " + GetSortDirection(e.SortExpression);
+            //SearchGrid.DataSource = Session["TaskTable"];
+            //SearchGrid.DataBind();
+            
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
@@ -53,6 +63,35 @@
 
             this.SearchGrid.DataSource = query.ToList();
             this.DataBind();
+        }
+
+        private string GetSortDirection(string column)
+        {
+            // By default, set the sort direction to ascending.
+            string sortDirection = "ASC";
+
+            // Retrieve the last column that was sorted.
+            string sortExpression = ViewState["SortExpression"] as string;
+
+            if (sortExpression != null)
+            {
+                // Check if the same column is being sorted.
+                // Otherwise, the default value can be returned.
+                if (sortExpression == column)
+                {
+                    string lastDirection = ViewState["SortDirection"] as string;
+                    if ((lastDirection != null) && (lastDirection == "ASC"))
+                    {
+                        sortDirection = "DESC";
+                    }
+                }
+            }
+
+            // Save new values in ViewState.
+            ViewState["SortDirection"] = sortDirection;
+            ViewState["SortExpression"] = column;
+
+            return sortDirection;
         }
     }
 }

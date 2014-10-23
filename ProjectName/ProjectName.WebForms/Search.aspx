@@ -4,10 +4,10 @@
     <%-- ScriptManger is in master page --%>
 
     <div class="container">
-        <h2>Search</h2>
+        <h2 class="text-center">All Offers</h2>
         <div class="form-group">
             <asp:Label ID="lblName" runat="server" Text="Name" CssClass="control-label "></asp:Label>
-            <asp:TextBox ID="tbName" runat="server" CssClass="form-control " onc></asp:TextBox>
+            <asp:TextBox ID="tbName" runat="server" CssClass="form-control " ></asp:TextBox>
         </div>
         <div class="form-group">
             <asp:Label ID="lblDescription" runat="server" Text="Description" CssClass="control-label "></asp:Label>
@@ -26,7 +26,8 @@
             <asp:GridView ID="SearchGrid" runat="server" AutoGenerateColumns="False"
                  DataKeyNames="ComodityId" ItemType="Comodity"
                  CssClass="table table-bordered" AllowPaging="True" AllowSorting="True"
-                OnPageIndexChanging="SearchGrid_PageIndexChanging">
+                OnPageIndexChanging="SearchGrid_PageIndexChanging"
+                OnSorting ="SearchGrid_Sorting">
                 <Columns>
                     <asp:HyperLinkField DataTextField="Name" DataNavigateUrlFields="ComodityId" SortExpression="Name" HeaderText="Product Name" >
                         <ItemStyle HorizontalAlign="Center" />
