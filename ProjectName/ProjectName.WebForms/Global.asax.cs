@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Optimization;
-using System.Web.Routing;
-using System.Web.Security;
-using System.Web.SessionState;
-
-namespace Kupuvalnik.WebForms
+﻿namespace Kupuvalnik.WebForms
 {
+    using System;
+    using System.Configuration;
+    using System.Web;
+    using System.Web.Caching;
+    using System.Web.Optimization;
+    using System.Web.Routing;
+
     using Logic;
 
     public class Global : HttpApplication
@@ -24,6 +22,11 @@ namespace Kupuvalnik.WebForms
             roleActions.AddUserAndRole();
 
             RegisterRoutes(RouteTable.Routes);
+
+            SqlCacheDependencyAdmin.EnableNotifications(ConfigurationManager.ConnectionStrings["KupuvalnikConnectionString"].ConnectionString);
+            SqlCacheDependencyAdmin.EnableTableForNotifications(
+                ConfigurationManager.ConnectionStrings["KupuvalnikConnectionString"].ConnectionString,
+                "Comodities");
         }
 
         private void RegisterRoutes(RouteCollection routes)
@@ -39,11 +42,11 @@ namespace Kupuvalnik.WebForms
 
         protected void Application_EndRequest(Object sender, EventArgs e)
         {
-            if (HttpContext.Current.Response.Status.StartsWith("500"))
-            {
-                HttpContext.Current.Response.ClearContent();
-                Response.Redirect("Unauthorized.aspx");
-            }
+            //if (HttpContext.Current.Response.Status.StartsWith("500"))
+            //{
+            //    HttpContext.Current.Response.ClearContent();
+            //    Response.Redirect("Unauthorized.aspx");
+            //}
         }
     }
 }
