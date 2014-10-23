@@ -3,10 +3,11 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <h2>Latest Offers</h2>
+        <h2 class="text-center" >Latest Offers</h2>
 
-        <asp:GridView ID="LatestOffers" runat="server"
-                      AutoGenerateColumns="False" DataKeyNames="ComodityID">
+        <asp:GridView  ID="LatestOffers" runat="server"
+                      AutoGenerateColumns="False" DataKeyNames="ComodityID"
+                    CssClass="table table-bordered">
             <Columns>
                 <asp:HyperLinkField DataTextField="Name" DataNavigateUrlFields="ComodityId" HeaderText="Product Name" >
                     <ItemStyle HorizontalAlign="Center" />

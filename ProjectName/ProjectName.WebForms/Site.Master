@@ -60,13 +60,10 @@
                                 <a runat="server" id="addCategory" visible="false" href="~/Admin/AddCategory">Add category</a>
                             </li>
                             <li>
-                                <a runat="server" href="~/Comodities">Comodities</a>
+                                <a runat="server" href="~/Search">Comodities</a>
                             </li>
                             <li>
                                 <a runat="server" href="~/Contact">Contact</a>
-                            </li>
-                            <li>
-                                <a runat="server" href="~/Search.aspx">Search</a>
                             </li>
                         </ul>
                         <asp:LoginView runat="server" ViewStateMode="Disabled">
