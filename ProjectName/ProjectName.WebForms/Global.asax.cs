@@ -33,8 +33,17 @@ namespace Kupuvalnik.WebForms
                 "~/ComodityDetails/Details.aspx");
 
             routes.MapPageRoute("AdminComodityDetails",
-            "Admin/{comodityid}",
-            "~/ComodityDetails/Details.aspx");
+                "Admin/{comodityid}",
+                "~/ComodityDetails/Details.aspx");
+        }
+
+        protected void Application_EndRequest(Object sender, EventArgs e)
+        {
+            if (HttpContext.Current.Response.Status.StartsWith("500"))
+            {
+                HttpContext.Current.Response.ClearContent();
+                Response.Redirect("Unauthorized.aspx");
+            }
         }
     }
 }
