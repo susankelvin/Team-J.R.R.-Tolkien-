@@ -6,6 +6,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Owin;
 using Kupuvalnik.WebForms.Models;
 
+using Error_Handler_Control;
+
 namespace Kupuvalnik.WebForms.Account
 {
     public partial class Login : Page
@@ -51,8 +53,7 @@ namespace Kupuvalnik.WebForms.Account
                         break;
                     case SignInStatus.Failure:
                     default:
-                        FailureText.Text = "Invalid login attempt";
-                        ErrorMessage.Visible = true;
+                        ErrorSuccessNotifier.AddErrorMessage("Invalid login attempt");
                         break;
                 }
             }

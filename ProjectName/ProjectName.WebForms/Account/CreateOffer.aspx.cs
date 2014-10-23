@@ -8,6 +8,8 @@
     using Kupuvalnik.WebForms.Models;
     using Microsoft.AspNet.Identity;
 
+    using Error_Handler_Control;
+
     public partial class CreateOffer : BasePage
     {
         public void CreateOffer_Click(object sender, EventArgs e)
@@ -15,7 +17,7 @@
             var currentUserId = Thread.CurrentPrincipal.Identity.GetUserId();
             if (currentUserId == null)
             {
-                this.ErrorMessage.Text = "You must log in in order to publish an offer!";
+                ErrorSuccessNotifier.AddErrorMessage("You must log in in order to publish an offer!");
                 return;
             }
             
@@ -32,15 +34,25 @@
                 }
                 else
                 {
-                    this.ErrorMessage.Text = "Image must be with file extension .jpeg or .png";
+                    ErrorSuccessNotifier.AddErrorMessage("Image must be with file extension .jpeg or .png");
+                    return;
                 }
             }
-
+            decimal currentPrice = 0;
+            try
+            {
+                currentPrice = decimal.Parse(this.Price.Text);
+            }
+            catch (Exception)
+            {
+                ErrorSuccessNotifier.AddErrorMessage("Please enter a decimal floating point number for the `price` field!");
+                return;
+            }
             var offer = new Comodity()
             {
                 Name = this.Name.Text,
                 Description = this.Description.Text,
-                Price = decimal.Parse(this.Price.Text),
+                Price = currentPrice,
                 AuthorId = currentUserId,
                 DateCreated = DateTime.Now,
                 CategoryId = int.Parse(this.DropDownListxCategories.SelectedValue),
@@ -48,7 +60,7 @@
             };
             this.Data.Comodities.Add(offer);
             this.Data.SaveChanges();
-            this.SuccessMessage.Text = "You have succesfully created product!";
+            ErrorSuccessNotifier.AddSuccessMessage("You have succesfully created product!");
         }
 
         protected void Page_Load(object sender, EventArgs e)

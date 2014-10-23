@@ -8,6 +8,7 @@
 
     using BasicPage;
     using Models;
+    using Error_Handler_Control;
 
     public partial class AddCategory : BasePage
     {
@@ -24,11 +25,11 @@
             }
             catch (Exception)
             {
-                this.ErrorMessage.Text = "You cannot add duplicate categories!";
+                ErrorSuccessNotifier.AddErrorMessage("You cannot add duplicate categories!");
                 return;
             }
 
-            this.SuccessMessage.Text = "You have succesfully added the category!";
+            ErrorSuccessNotifier.AddSuccessMessage("You have succesfully added the category!");
             this.UpdateAllCategoriesData();
         }
 

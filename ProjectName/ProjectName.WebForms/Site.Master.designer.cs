@@ -31,6 +31,15 @@ namespace Kupuvalnik.WebForms {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor addCategory;
         
         /// <summary>
+        /// ucHandler control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Error_Handler_Control.ErrorSuccessNotifier ucHandler;
+        
+        /// <summary>
         /// MainContent control.
         /// </summary>
         /// <remarks>
