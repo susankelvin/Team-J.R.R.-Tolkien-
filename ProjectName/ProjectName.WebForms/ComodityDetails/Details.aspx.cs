@@ -29,9 +29,10 @@
             };
             this.Data.Comments.Add(comment);
             this.Data.SaveChanges();
-            
+
             ErrorSuccessNotifier.AddSuccessMessage("You have succesfully posted your comment!");
             Response.Redirect(Request.RawUrl);
+            
         }
 
         protected void Page_Load(object sender, EventArgs e)
