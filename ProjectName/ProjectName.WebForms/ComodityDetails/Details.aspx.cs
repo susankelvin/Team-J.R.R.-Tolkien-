@@ -12,12 +12,11 @@
     using Kupuvalnik.WebForms.Models;
     using System.Threading.Tasks;
     using Microsoft.AspNet.Identity;
+    using Error_Handler_Control;
     
     public partial class Details : BasePage
     {
         public Comodity Comodity { get; set; }
-
-      
 
         public void CreateComment_Click(object sender, EventArgs e)
         {
@@ -30,6 +29,8 @@
             };
             this.Data.Comments.Add(comment);
             this.Data.SaveChanges();
+            
+            ErrorSuccessNotifier.AddSuccessMessage("You have succesfully posted your comment!");
             Response.Redirect(Request.RawUrl);
         }
 
@@ -59,7 +60,7 @@
                                                          int? commentId)
         {
             var currentComodityId = int.Parse(Page.RouteData.Values["comodityid"].ToString());
-            return this.Data.Comments.All().Where(c => c.ComodityId == currentComodityId).OrderByDescending(c=>c.DateCreated).ToList();
+            return this.Data.Comments.All().Where(c => c.ComodityId == currentComodityId).OrderByDescending(c => c.DateCreated).ToList();
         }
     }
 }
