@@ -17,6 +17,8 @@
     {
         public Comodity Comodity { get; set; }
 
+      
+
         public void CreateComment_Click(object sender, EventArgs e)
         {
             var comment = new Comment()

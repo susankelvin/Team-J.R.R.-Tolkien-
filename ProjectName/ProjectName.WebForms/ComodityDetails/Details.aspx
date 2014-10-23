@@ -11,16 +11,20 @@
     <p><%: this.Comodity.Author.UserName %></p>
     <h3>Posted:</h3>
     <p><%: this.Comodity.DateCreated %></p>
-    <h3 class="text-center">Comments: </h3>
-    <div class="form-horizontal">
-        <div class="form-group">
-            <div class="col-md-5">
+    <h3>
+        Comments:
+        <input class="btn btn-primary" type="button" name="Post Comment" id="PostCommentTootleButton" value="Post Comment" onclick="show()"/>
+    </h3>
+    <div id="CommentContainer"class="form-horizontal">
+        <div class="form-group col-md-12">
+            <div class="col-md-7">
                 <asp:TextBox runat="server" ID="CommentText" TextMode="MultiLine" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="CommentText"
                                             CssClass="text-danger" ErrorMessage="The comment field is required." />
             </div>
-            <div class="col-md-offset-2 col-md-5">
-                <asp:Button runat="server" OnClick="CreateComment_Click" Text="Post Comment" CssClass="btn btn-primary" />
+            <div class="col-md-offset-2 col-md-5 pull-right" >
+                <asp:Button runat="server" OnClick="CreateComment_Click" Text="Post" CssClass="btn btn-primary" />
+                <input class="btn btn-primary" type="button" value="Cancel" onclick="hide()" />
             </div>
         </div>
 
@@ -36,5 +40,16 @@
             </div>
         </ItemTemplate>
     </asp:Repeater>
+    <script>
+        $("#CommentContainer").hide();
+        function hide() {
+            $("#CommentContainer").hide();
+            $("#PostCommentTootleButton").show();
+        }
 
+        function show() {
+            $("#CommentContainer").show();
+            $("#PostCommentTootleButton").hide();
+        }
+    </script>
 </asp:Content>
